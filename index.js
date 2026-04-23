@@ -1,14 +1,28 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-const adminRoutes = require('./routes/adminRoutes');
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use('/', adminRoutes);
+const userRoutes = require('./routes/userRoutes');
 
-app.listen(5000, () => {
-    console.log(`Server is running on http://localhost:5000`)
+app.use('/api', userRoutes);
+
+app.listen(5000, ()=>{
+    console.log('Server is running on http://localhost:5000/api/users')
 })
+
+
+// const express = require('express')
+// const app = express();
+// const adminRoutes = require('./routes/adminRoutes');
+
+// app.use(express.urlencoded({ extended: true }));
+
+// app.use('/', adminRoutes);
+
+// app.listen(5000, () => {
+//     console.log(`Server is running on http://localhost:5000`)
+// })
 
 // const express = require('express')
 // const app = express(); // instance
